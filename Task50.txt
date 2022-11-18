@@ -1,0 +1,42 @@
+Null coalescing  operator in JavaScript :- (??)
+Null coalescing operator in javascript is a logical operator which will return its right hand side value when its left hand side operand is either null or undefined or Vise Versa, i.e, If null or undefined is present in any side of the operand, then the value in the other side will be returned as output.
+If the left hand side operand is not null or undefined, then it will return its right hand side value as output.
+If we null as one side operator and undefined as other side operator, then undefined will be returned. 
+If we have 0 on any of the side and null/undefined on other side, then 0 will be returned.
+For example :
+let value = 'Hello' ?? undefined;
+ console.log(value);                      // output: Hello
+let value =undefined ?? 'Hello' ;
+ console.log(value);                      // output: Hello
+let value = null ?? undefined;
+ console.log(value);                       // output: undefined
+let value = 0 ?? undefined;
+console.log(value);                    // output: 0
+let value = null ?? 0;
+console.log(value);                    // output: 0
+
+Optional Chaining Operator :- (?.)
+It is an operator in JavaScript which is used to prevent throwing error if a specific value or function or method is not present. Instead of throwing error, it will return undefined. 
+const list = {
+  name: 'Queen',
+  age:'20',
+  sibling1: {
+    name: 'Sheethel'
+  }
+};
+
+const member = list.sibling2?.name;
+console.log(member);                                                               // output: undefined                                                                         
+
+console.log(list. Sibling3?.());                                                   // output: undefined                                                                         
+
+const member1 = list.sibling1?.name;
+console.log(member1);                                                             // output: Sheethel
+
+Immutability in JavaScript :-
+Immutability is a state where the contents or values cannot be changed or modified Primitive values are immutable whereas arrays and objects are mutable.
+const a =4;
+a=5;               //Error
+const a=[1,2,3];
+a[0]=4;
+console.log(a);    // [4,2,3]

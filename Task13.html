@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .container {
+        padding: 16px;
+      }
+      input[type="text"],
+      input[type="email"] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        display: inline-block;
+        border: none;
+        background: #f1f1f1;
+      }
+
+      .registerbtn {
+        background-color: #04aa6d;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+        height: 50px;
+        border-radius: 30px;
+        font-size: 20px;
+      }
+
+      .registerbtn:hover {
+        opacity: 1;
+      }
+
+      a {
+        color: rgb(5, 55, 106);
+        cursor: pointer;
+      }
+
+      #List,
+      th,
+      td {
+        border: 2px solid rgb(18, 17, 17);
+        border-collapse: collapse;
+        table-layout: fixed;
+        width: 80%;
+        margin-left: 10%;
+      }
+      th,
+      td {
+        padding: 10px;
+      }
+      th {
+        background-color: rgb(175, 173, 173);
+      }
+
+      #record {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <form onsubmit="event.preventDefault(); onFormSubmit();">
+        <div class="container">
+          <label id="label" for="Name"><b>Name</b></label>
+          <input
+            type="text"
+            placeholder="Enter Name"
+            name="name"
+            id="name"
+            required
+          />
+
+          <label id="label" for="Email"><b>Email</b></label>
+          <input
+            type="email"
+            placeholder="Enter Email"
+            name="email"
+            id="email"
+            required
+          />
+          <button type="submit" name="submit" class="registerbtn">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+    <div>
+      <table id="List">
+        <h1 id="record">Record</h1>
+        <thead id="tab_head">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="tab_body"></tbody>
+      </table>
+    </div>
+    <script>
+      let selectRow = null;
+
+      function onFormSubmit() {
+        let formData = readFormData();
+        if (selectRow == null) insertNewRecord(formData);
+        else updateRecord(formData);
+        resetForm();
+      }
+      // Getvalue from User
+      function readFormData() {
+        var formData = [];
+        formData["name"] = document.getElementById("name").value;
+        formData["email"] = document.getElementById("email").value;
+        return formData;
+      }
+
+      // Insert & Show
+      function insertNewRecord(data) {
+        let table = document
+          .getElementById("List")
+          .getElementsByTagName("tbody")[0];
+        let newRow = table.insertRow(table.length);
+        cell1 = newRow.insertCell(0);
+        cell1.innerHTML = data.name;
+        cell2 = newRow.insertCell(1);
+        cell2.innerHTML = data.email;
+        cell4 = newRow.insertCell(2);
+        cell4.innerHTML = `<a onclick="onEdit(this)">Edit</a> &nbsp;&nbsp; <a onclick="onDelete(this)">Delete</a>`;
+      }
+
+      // Reset Data
+      function resetForm() {
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        selectRow = null;
+      }
+
+      // Edit
+      function onEdit(td) {
+        selectRow = td.parentElement.parentElement;
+        document.getElementById("name").value = selectRow.cells[0].innerHTML;
+        document.getElementById("email").value = selectRow.cells[1].innerHTML;
+      }
+
+      // Update Record
+      function updateRecord(formData) {
+        selectRow.cells[0].innerHTML = formData.name;
+        selectRow.cells[1].innerHTML = formData.email;
+      }
+
+      // Delete
+      function onDelete(td) {
+        row = td.parentElement.parentElement;
+        document.getElementById("List").deleteRow(row.rowIndex);
+        resetForm();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cards</title>
+    <style>
+      img {
+        width: 200px;
+        height: 220px;
+      }
+      body {
+        overflow: hidden;
+      }
+
+      .container {
+        width: 580px;
+        height: auto;
+        margin: auto;
+        margin-top: 30px;
+        padding: 60px;
+      }
+
+      h1,
+      h4,
+      .heading-p {
+        text-align: center;
+      }
+
+      h4 {
+        color: green;
+      }
+      .heading {
+        color: rgb(123, 120, 120);
+      }
+
+      .card-container {
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .card {
+        margin: 15px;
+        border-radius: 15px;
+        position: relative;
+      }
+
+      .card-content {
+        background-color: white;
+        width: 160px;
+        border-top-right-radius: 5px;
+        position: absolute;
+        bottom: 4px;
+        height: 80px;
+      }
+      .card-content p {
+        padding: 0;
+        color: rgb(163, 155, 155);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h4>THE MOST POWERFUL THEME ON EARTH</h4>
+      <h1>We are a team of expert designers</h1>
+      <p class="heading">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
+        recusandae molestiae quia velit nobis, sapiente enim quod voluptas culpa
+        qui veniam?
+      </p>
+
+      <div class="card-container">
+        <div class="card">
+          <img
+            src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2Zlc3Npb25hbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60"
+            alt="ceo"
+          />
+          <div class="card-content">
+            <h3>---Della Wide</h3>
+            <p>Chief Executive Officer</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://images.unsplash.com/photo-1629425733761-caae3b5f2e50?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjZ8fHByb2Zlc3Npb25hbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60"
+            alt="vp"
+          />
+          <div class="card-content">
+            <h3>---Arisha Riley</h3>
+            <p>Vice President</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img
+            src="https://images.unsplash.com/photo-1562788869-4ed32648eb72?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzJ8fHByb2Zlc3Npb25hbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60"
+            alt="Cfo"
+          />
+          <div class="card-content">
+            <h3>---Blaine Myers</h3>
+            <p>Chief Financial Officer</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

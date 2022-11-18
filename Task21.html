@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    .hide {
+      display: none;
+    }
+    .show {
+      display: block;
+    }
+    #main {
+      display: flex;
+      flex-direction: row;
+    }
+    #sub {
+      margin-left: 45%;
+    }
+    #side1 {
+      display: flex;
+      flex-direction: column;
+    }
+    #side1 button {
+      margin-bottom: 10px;
+    }
+    #side2 {
+      margin-left: 20px;
+      border: 1px dotted black;
+      width: 500px;
+    }
+    p {
+      white-space: pre;
+    }
+    input,
+    button {
+      padding: 10px;
+      border: 1px solid lightgray;
+      border-radius: 2px;
+    }
+    #textInput {
+      margin: 20px 0;
+      padding: 5px;
+      border: 1px solid;
+      margin: 20px auto;
+      width: 200px;
+    }
+    body {
+      width: 50%;
+      margin: 0 auto;
+      text-align: center;
+    }
+    #val1 {
+      width: 40%;
+      margin: 20px auto;
+      padding: 10px 0;
+    }
+  </style>
+</head>
+<html>
+  <body>
+    <h2>Array Methods</h2>
+    <div id="main">
+      <div id="side1">
+        <button class="btn btn-primary" onclick="onButtonClick()">Add element</button>
+        <button class="btn btn-primary" onclick="popDemo()">Remove Last Element</button>
+
+        <button class="btn btn-primary" onclick="clearArray()">Remove all the Elements</button>
+        <button class="btn btn-primary" onclick="unShift()">Unshift</button>
+        <button class="btn btn-primary" onclick="Shift()">shift</button>
+        <button class="btn btn-primary" onclick="toLower()">To Lower case</button>
+        <button class="btn btn-primary" onclick="toUpper()">To Upper case</button>
+      </div>
+      <div id="side2">
+        <input
+          class="hide"
+          type="text"
+          id="textInput"
+          value=""
+          placeholder="Type Elements"
+        />
+        <p id="val1"></p>
+        <p id="val2"></p>
+        <button class="btn btn-primary" id="sub" onclick="viewItems()">Submit</button>
+      </div>
+    </div>
+    <script>
+      var fruitArr = [
+        "Dragon fruit",
+        "Pine Apple",
+        "Grapes",
+        "Banana",
+        "Orange",
+      ];
+      document.getElementById("sub").className = "hide";
+      document.getElementById("val1").innerHTML =
+        "Initially Array holds" + "\n" + fruitArr.join("\n");
+      function popDemo() {
+        document.getElementById("textInput").className = "hide";
+        document.getElementById("val1").className = "hide";
+        document.getElementById("sub").className = "hide";
+        fruitArr.pop();
+        document.getElementById("val2").innerHTML =
+          "The array Items after popup are" + "\n" + fruitArr.join("\n");
+      }
+      function onButtonClick() {
+        document.getElementById("textInput").className = "show";
+        document.getElementById("sub").className = "show";
+      }
+      function viewItems() {
+        boxvalue = document.getElementById("textInput").value;
+        fruitArr.push(boxvalue);
+        document.getElementById("val2").innerHTML =
+          "The Array after adding new items are" + "\n" + fruitArr;
+        document.getElementById("textInput").value = "";
+      }
+      function clearArray() {
+        document.getElementById("textInput").className = "hide";
+        fruitArr = [];
+        document.getElementById("val2").innerHTML =
+          "All items are Removed" + " The length of array = " + fruitArr.length;
+      }
+      function unShift() {
+        fruitArr.unshift("Mango", "Apple");
+        document.getElementById("val2").innerHTML = fruitArr;
+        document.getElementById("sub").className = "hide";
+      }
+      function Shift() {
+        fruitArr.shift();
+        document.getElementById("val2").innerHTML = fruitArr;
+        document.getElementById("sub").className = "hide";
+      }
+      function toUpper() {
+        fruitArr = fruitArr.map(function (x) {
+          return x.toUpperCase();
+        });
+        document.getElementById("sub").className = "hide";
+        document.getElementById("val2").innerHTML = fruitArr;
+      }
+      function toLower() {
+        fruitArr = fruitArr.map(function (x) {
+          return x.toLowerCase();
+        });
+        document.getElementById("sub").className = "hide";
+        document.getElementById("val2").innerHTML = fruitArr;
+      }
+    </script>
+  </body>
+</html>

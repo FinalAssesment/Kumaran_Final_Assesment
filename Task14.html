@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Calculator</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+      #btn {
+        background-color: #0f056d;
+      }
+      .container {
+        margin-top: 7%;
+      }
+      .heading {
+        background-color: #04aa6d;
+        color: white;
+        padding: 16px 20px;
+        margin: 8px 0;
+        border: none;
+        width: 100%;
+        opacity: 1;
+        height: 50px;
+        border-radius: 30px;
+        font-size: 20px;
+        margin-left: 45%;
+      }
+      input[type="button"] {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        background-color: #0d0d0d;
+        color: white;
+        border: solid black 0.5px;
+        width: 100%;
+        border-radius: 5px;
+        height: 70%;
+      }
+      input:active[type="button"] {
+        background: #e5e5e5;
+      }
+      .calculator {
+        padding: 10px;
+        height: 380px;
+        width: 300px;
+        margin: auto;
+        background-color: #191b28;
+        margin-top: 5%;
+      }
+      .display-box {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        background-color: #dcdbe1;
+        border: solid black 0.5px;
+        color: black;
+        width: 100%;
+        height: 65%;
+      }
+    </style>
+  </head>
+
+  <body class="container">
+    <span class="heading">Calculator</span>
+    <table class="calculator">
+      <tr>
+        <td colspan="4">
+          <input class="display-box" type="text" id="result" disabled />
+        </td>
+      </tr>
+      <tr>
+        <!-- displays the value of clicked button -->
+        <td><input type="button" value="1" onclick="output('1')" /></td>
+        <td><input type="button" value="2" onclick="output('2')" /></td>
+        <td><input type="button" value="3" onclick="output('3')" /></td>
+        <td><input type="button" value="/" onclick="output('/')" /></td>
+      </tr>
+      <tr>
+        <td><input type="button" value="4" onclick="output('4')" /></td>
+        <td><input type="button" value="5" onclick="output('5')" /></td>
+        <td><input type="button" value="6" onclick="output('6')" /></td>
+        <td><input type="button" value="-" onclick="output('-')" /></td>
+      </tr>
+      <tr>
+        <td><input type="button" value="7" onclick="output('7')" /></td>
+        <td><input type="button" value="8" onclick="output('8')" /></td>
+        <td><input type="button" value="9" onclick="output('9')" /></td>
+        <td><input type="button" value="+" onclick="output('+')" /></td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" value="C" onclick="clearScreen()" id="btn" />
+        </td>
+        <td><input type="button" value="0" onclick="output('0')" /></td>
+
+        <!-- Evaluates expression -->
+        <td><input type="button" value="=" onclick="cal()" id="btn" /></td>
+        <td><input type="button" value="*" onclick="output('*')" /></td>
+      </tr>
+    </table>
+
+    <script>
+      // To Clear
+      function clearScreen() {
+        document.getElementById("result").value = "";
+      }
+
+      // To display
+      function output(value) {
+        document.getElementById("result").value += value;
+      }
+
+      function cal() {
+        var a = document.getElementById("result").value;
+        var b = eval(a);
+        document.getElementById("result").value = b;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+      }
+      .flex-container {
+        display: flex;
+        margin-bottom: 25px;
+      }
+
+      .flex-child {
+        height: 195px;
+        width: 50px;
+        flex: 1;
+        border: 2px solid black;
+        padding: 40px;
+        margin-right: 260px;
+      }
+
+      .flex-child:first-child {
+        margin-left: 260px;
+        margin-right: 10px;
+      }
+      .flex-child img {
+        object-fit: fill;
+      }
+    </style>
+    <script>
+      function allowDrop(ev) {
+        ev.preventDefault();
+      }
+
+      function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+      }
+
+      function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        ev.target.appendChild(document.getElementById(data));
+      }
+    </script>
+  </head>
+  <body>
+    <div id="outer" style="border: 5px solid black; margin: 50px">
+      <h2 style="text-align: center">Drag and Drop</h2>
+      <h3 style="text-align: center">Drag Cat between these two elements</h3>
+      <div class="flex-container">
+        <div
+          class="flex-child"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        >
+          <img
+            id="drag1"
+            src="https://media.istockphoto.com/id/138101629/photo/kitten-smiling.jpg?s=612x612&w=0&k=20&c=C49bmDfbAsuJ6xSChf-XTwnLttjantrSLE4-xEYR0VU="
+            draggable="true"
+            ondragstart="drag(event)"
+          />
+        </div>
+        <div
+          class="flex-child"
+          ondrop="drop(event)"
+          ondragover="allowDrop(event)"
+        ></div>
+      </div>
+    </div>
+  </body>
+</html>

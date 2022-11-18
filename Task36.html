@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Booking Details</title>
+    <style>
+      div#maincontent {
+        height: 100px;
+        width: 500px;
+        border: 1px solid #cee2fa;
+        text-align: left;
+        color: #08438e;
+        font-family: calibri;
+        font-size: 20;
+        padding: 5px;
+        margin-left: 10px;
+      }
+      div#heading {
+        text-decoration: bold;
+        text-align: center;
+        margin-top: 40px;
+        margin-left: 10px;
+        width: 500px;
+        border: 1px solid #cee2fa;
+        text-align: center;
+        color: #08438e;
+        background-color: #cee2fa;
+        font-family: calibri;
+        font-size: 20;
+        padding: 5px;
+      }
+      h2 {
+        padding: 0;
+        margin: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="heading">
+      <h2>Booking Summary</h2>
+    </div>
+    <div id="maincontent">
+      <body>
+        <form id="p1">
+          <input
+            type="text"
+            placeholder="Enter No of Seats"
+            id="input_id"
+            value=""
+          />
+          <input type="button" value="Submit" onclick="wawa()" />
+        </form>
+        <div id="p2"></div>
+      </body>
+      <script>
+        //Write the code to display the discounted price on click of the text
+        function wawa() {
+          var variable = document.getElementById("input_id").value;
+
+          if (variable > 5) {
+            alert("No Booking Slot is Available");
+          }
+
+          if (variable <= 2) {
+            const elmnt = document.getElementById("p1");
+            elmnt.remove();
+            document.getElementById("p2").innerHTML = "Cost per ticket is: $9";
+            const total = document.createElement("p");
+            total.innerHTML = "Total Cost is: $" + variable * 9;
+            document.getElementById("p2").appendChild(total);
+          }
+          if (variable > 2 && variable <= 5) {
+            var dis = variable;
+            var totalcost = variable * 9;
+            var cost = 9;
+            var val = 0;
+            var div = 5;
+            for (var i = 1; i <= dis; i++) {
+              val += cost * (div / 100);
+              div += 2;
+            }
+
+            const elmnt = document.getElementById("p1");
+            elmnt.remove();
+            document.getElementById("p2").innerHTML = "Cost per ticket is: $9";
+            const total = document.createElement("p");
+            total.innerHTML = "Total Cost is: $" + variable * 9;
+            document.getElementById("p2").appendChild(total);
+            const discount = document.createElement("p");
+            discount.innerHTML =
+              "Congratulations! " +
+              variable +
+              " seats are eligible for discount." +
+              `<a onclick=alert(${totalcost - val})>Apply</a>`;
+            document.getElementById("p2").appendChild(discount);
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>

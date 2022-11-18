@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Codepen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        outline: 0;
+      }
+      #code {
+        bottom: 0;
+        position: relative;
+        width: 100%;
+        height: 37vh;
+        border: unset;
+        background: #dbe9f7;
+      }
+      .text-code {
+        min-height: 350px;
+        overflow-x: hidden;
+        width: 100%;
+        background: #35383c;
+        color: white;
+      }
+
+      #coding_area {
+        width: 100%;
+        height: calc(58vh - 60px);
+        min-height: 125px;
+        display: flex;
+        overflow: hidden;
+        border-bottom: 15px solid white;
+      }
+      #code_output {
+        height: 100%;
+        color: white;
+        text-transform: uppercase;
+      }
+      .headwrap {
+        display: flex;
+        flex-direction: row;
+      }
+      .headwrap .head {
+        width: 33.5%;
+      }
+      span {
+        background-color: #35383c;
+        display: inline-block;
+        color: white;
+      }
+      #coding_playground_outer {
+        padding: 20px 30px;
+      }
+      .boxes {
+        background-color: black;
+      }
+      img {
+        height: 15px;
+        width: 30px;
+        padding-top: 6px;
+        padding-left: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="coding_playground_outer">
+      <div class="page-wrap">
+        <div class="boxes">
+          <div class="headwrap">
+            <div class="head">
+              <span
+                ><img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkjmPYIE-TghWfMLxjSTGFHb-NTUkB1qhlEe3SdbzguEksH2-UW3mTGOUi8rfTcjzKU74&usqp=CAU"
+                />HTML</span
+              >
+            </div>
+            <div class="head">
+              <span
+                ><img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTj908jpvVsrjnNnN_BmJlsgRbhxcBVqJyFLg&usqp=CAU"
+                />CSS</span
+              >
+            </div>
+            <div class="head">
+              <span
+                ><img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNE0HLQ1I8Vg1GN-kHcZDV7bbJpVW3TlZa8A&usqp=CAU"
+                />JS</span
+              >
+            </div>
+          </div>
+          <div id="coding_area">
+            <textarea id="html" class="text-code language-html"></textarea>
+            <textarea id="css" class="text-code language-css"></textarea>
+            <textarea id="js" class="text-code language-js"></textarea>
+          </div>
+
+          <div id="code_output">
+            Output updated
+            <iframe id="code"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function compile() {
+        var html = document.getElementById("html");
+        var css = document.getElementById("css");
+        var js = document.getElementById("js");
+        var code = document.getElementById("code").contentWindow.document;
+
+        document.body.onkeyup = function () {
+          code.open();
+          code.writeln(
+            html.value +
+              "<style>" +
+              css.value +
+              "</style>" +
+              "<script>" +
+              js.value +
+              "</" +
+              "script>"
+          );
+          code.close();
+        };
+      }
+
+      compile();
+    </script>
+  </body>
+</html>
